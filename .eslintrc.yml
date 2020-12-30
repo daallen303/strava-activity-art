@@ -1,0 +1,40 @@
+ignorePatterns: [ node_modules/, dist, cache, serve/static]
+
+env:
+  es6: true
+  node: true
+  jest: true
+
+globals:
+  fetch: false
+  document: false
+  window: false
+  __DEV__: false
+
+extends: [
+  "eslint:recommended",
+  "plugin:vue/recommended",
+  "plugin:cypress/recommended",
+]
+
+rules:
+  arrow-spacing: error
+  complexity: [ error, 6 ]
+  curly: [ error, all ]
+  indent: [ error, 2 ]
+  key-spacing: [ error, { beforeColon: false } ]
+  linebreak-style: [ error, unix ]
+  no-console: [ error ]
+  no-process-exit: off
+  no-trailing-spaces: [ error ]
+  quotes: [ error, single ]
+  semi: [ error, always ]
+  space-infix-ops: [ error ]
+
+overrides:
+  - files: [ "**/*.test.js" ]
+    globals:
+      global: readonly
+  - files: [ "scripts/**" ]
+    rules:
+      no-console: ["error", { allow: ["log", "warn", "error"] }]
